@@ -3,7 +3,7 @@ async function makeRequest(endpoint: string, options?: RequestInit) {
     headers: {
       "Content-Type": "application/json",
     },
-    credentials: "include",
+    credentials: "same-origin",
     ...options,
   });
 }
