@@ -16,7 +16,7 @@ const App: React.FC = () => {
     <Box>
       {error && (
         <Box backgroundColor="red.300" color="red.800" p={2} px={4}>
-          {error}
+          {error?.message}
         </Box>
       )}
       <Header />
