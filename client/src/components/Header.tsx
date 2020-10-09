@@ -12,14 +12,13 @@ interface IHeaderProps {}
 
 const mapUserStateToProps = (state: UserState) => ({
   user: state.user,
-  error: state.error,
   login: state.login,
   logout: state.logout,
   isAuthenticated: state.isAuthenticated(),
 });
 
 const Header: React.FC<IHeaderProps> = () => {
-  const { user, error, login, logout, isAuthenticated } = useUserStore(
+  const { user, login, logout, isAuthenticated } = useUserStore(
     mapUserStateToProps,
     shallow
   );
@@ -32,7 +31,6 @@ const Header: React.FC<IHeaderProps> = () => {
       justifyContent="space-between"
       backgroundColor="gray.200"
     >
-      {error && <Text>Something went wrong...</Text>}
       <Stack isInline spacing={8} align="center" flex="1" justify="flex-end">
         {isAuthenticated && (
           <Box>
