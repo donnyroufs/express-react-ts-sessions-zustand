@@ -7,7 +7,9 @@ const App: React.FC = () => {
   const checkAuthStatus = useUserStore((state) => state.status);
 
   // Check if we have a valid session on initial page load.
-  useEffect(() => checkAuthStatus(), []);
+  useEffect(() => {
+    checkAuthStatus();
+  }, []);
 
   return (
     <Box>
