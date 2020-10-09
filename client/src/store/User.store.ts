@@ -4,42 +4,23 @@ import Auth from "../api/Auth";
 const useStore = create<UserState>((set, get) => ({
   user: null,
   error: null,
+
   setUser(data: User | null) {
     set(() => ({ user: data }));
   },
   async login(e, user) {
     e.preventDefault();
-    try {
-      const res = await Auth.login(user);
-      if (res.status === 200) {
-        const data = await res.json();
-        set(() => ({ user: data, error: null }));
-      }
-    } catch (err) {
-      set(() => ({ error: err }));
-    }
+    const [data, error] = await Auth.login(user)
+    set(() => ({ user: data, error }))
   },
   async logout(e) {
     e.preventDefault();
-    try {
-      const res = await Auth.logout();
-      if (res.status === 200) {
-        set(() => ({ user: null, error: null }));
-      }
-    } catch (err) {
-      set(() => ({ error: err }));
-    }
+    const [data, error] = await Auth.logout()
+    set(() => ({ user: data, error }))
   },
   async status() {
-    try {
-      const res = await Auth.checkAuthStatus();
-      if (res.status === 200) {
-        const data = await res.json();
-        set(() => ({ user: data, error: null }));
-      }
-    } catch (err) {
-      set(() => ({ error: err }));
-    }
+    const [data, error] = await Auth.checkAuthStatus()
+    set(() => ({ user: data, error }))
   },
   isAuthenticated() {
     return !!get().user;
