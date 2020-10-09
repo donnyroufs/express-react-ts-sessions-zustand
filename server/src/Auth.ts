@@ -3,16 +3,6 @@ import query from "./queryData";
 
 const users = query("users");
 
-export type User = {
-  id: number;
-  username?: string;
-  password?: string;
-};
-
-export type ResponseAuthUser = {
-  isValid: boolean;
-  user: User | null;
-};
 
 class Auth {
   public static isAuthorized(req: Request, res: Response, next: NextFunction) {
