@@ -5,6 +5,7 @@ import useUserStore from "./store/User.store";
 
 const App: React.FC = () => {
   const checkAuthStatus = useUserStore((state) => state.status);
+  const error = useUserStore((state) => state.error);
 
   // Check if we have a valid session on initial page load.
   useEffect(() => {
@@ -13,6 +14,11 @@ const App: React.FC = () => {
 
   return (
     <Box>
+      {error && (
+        <Box backgroundColor="red.300" color="red.800" p={2} px={4}>
+          {error}
+        </Box>
+      )}
       <Header />
     </Box>
   );
