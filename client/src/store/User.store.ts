@@ -1,3 +1,4 @@
+import { mountStoreDevtool } from 'simple-zustand-devtools';
 import create from "zustand";
 import Auth from "../api/Auth";
 
@@ -26,5 +27,9 @@ const useStore = create<UserState>((set, get) => ({
     return !!get().user;
   },
 }));
+
+if (process.env.NODE_ENV === 'development') {
+  mountStoreDevtool('Store', useStore);
+}
 
 export default useStore;
