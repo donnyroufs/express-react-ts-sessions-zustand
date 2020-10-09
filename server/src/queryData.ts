@@ -1,3 +1,4 @@
+/* obviously use hashed passwords blabla */
 const data = {
   users: [{ id: 1, username: "admin", password: "admin" }],
   items: [
